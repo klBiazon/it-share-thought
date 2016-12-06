@@ -1,0 +1,46 @@
+<div class="container post-text">
+  <div class="col-sm-12">
+    <div class="col-sm-12">
+      <h1>Create Post</h1>
+    </div>
+    <div class="col-sm-12">
+      <uib-tabset class="post-tab">
+        <uib-tab class="active">
+          <uib-tab-heading>
+            Write your post
+          </uib-tab-heading>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <form class="form" name="form" ng-submit="$ctrl.savePost($ctrl.post)">
+                <div class="form-group">
+                  <label>Title</label>
+                  <input type="text" name="title" class="form-control" ng-model="$ctrl.post.title" placeholder="Enter title of your blog..." required/>
+                  <p class="help-block" ng-show="form.title.$error.required && vm.submitted">
+                    A title is required
+                  </p>
+                </div>
+                <div class="form-group">
+                  <label>Content of your post</label>
+                  <textarea class="form-control" id="content" ng-model="$ctrl.post.content" rows="15" ng-required="true" placeholder="Enter the content of your blog post"></textarea>
+                  <p class="help-block" ng-show="form.title.$error.required && vm.submitted">
+                    A body is required
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </uib-tab>
+        <uib-tab select="$ctrl.construct($ctrl.post)">
+          <uib-tab-heading>
+            Preview
+          </uib-tab-heading>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p ng-bind-html="$ctrl.preview"></p>
+            </div>
+          </div>
+        </uib-tab>
+      </uib-tabset>
+    </div>
+  </div>
+</div>
