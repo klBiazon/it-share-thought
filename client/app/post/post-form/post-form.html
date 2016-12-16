@@ -1,7 +1,7 @@
 <div class="container post-text">
   <div class="col-sm-12">
     <div class="col-sm-12">
-      <h1>Create Post</h1>
+      <h1 class="create-post">Create Post</h1>
     </div>
     <div class="col-sm-12">
       <uib-tabset class="post-tab">
@@ -21,10 +21,18 @@
                 </div>
                 <div class="form-group">
                   <label>Content of your post</label>
-                  <textarea class="form-control" id="content" ng-model="$ctrl.post.content" rows="15" ng-required="true" placeholder="Enter the content of your blog post"></textarea>
+                  <textarea class="form-control" id="content" ng-model="$ctrl.post.content" rows="11" ng-required="true" placeholder="Enter the content of your blog post"></textarea>
                   <p class="help-block" ng-show="form.title.$error.required && vm.submitted">
                     A body is required
                   </p>
+                </div>
+                <div class="form-group">
+                  <label>Enable comment:
+                    <input type="checkbox" class="enable-comment" ng-model="$ctrl.post.canComment">
+                  </label>
+                </div>
+                <div class="pull-right">
+                  <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Save</button>
                 </div>
               </form>
             </div>
@@ -36,7 +44,9 @@
           </uib-tab-heading>
           <div class="panel panel-default">
             <div class="panel-body">
-              <p ng-bind-html="$ctrl.preview"></p>
+              <div class="col-xs-12">
+                <p ng-bind-html="$ctrl.preview"></p>
+              </div>
             </div>
           </div>
         </uib-tab>

@@ -2,21 +2,31 @@
 (function(){
 
   class PostFormComponent {
-    constructor() {
+    constructor(API) {
+      this.API = API;
       this.message = 'Hello';
-      this.post = {};
+      this.post = {
+        canComment: true
+      };
       this.preview = '';
     }
 
     savePost(post) {
-      console.log(post);
-      console.log()
+      this.API.post(`posts`, function(res, err) {
+        if (!err) {
+          console.log(res);
+        } else {
+          console.log(err);
+        }
+      }, post);
     }
 
     construct(post) {
-      console.log(post);
-      this.preview = '<h1>' + post.title + '</h1><br>' +
-                      '<p class="preview">' + post.content + '</p>';
+      var constructPreview = {};
+      constructPreview.title = post.title || '[Title here]';
+      constructPreview.content = post.content || '[Content of your blog]';
+      this.preview = '<h1>' + constructPreview.title + '</h1><hr>' +
+                      '<p class="preview">' + constructPreview.content + '</p>';
     }
   }
 
