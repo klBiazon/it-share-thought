@@ -31,6 +31,14 @@
  * App-wide Styles
  */
 
+.no-padding {
+  padding: 0px !important;
+}
+
+.preview {
+  white-space: pre-wrap;
+}
+
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
@@ -38,3 +46,141 @@
   padding: 0.2em 0;
 }
 
+.blog {
+  font-size: 90px;
+  font-family: Architects Daughter;
+}
+
+.blog:focus {
+  text-decoration: none;
+  color: #428bca;
+}
+
+.blog:hover {
+  text-decoration: none;
+  color: #2a6496;
+}
+
+.separator {
+  border: 0;
+  border-top: 1px solid #08007D;
+}
+
+.header-color {
+  background-color: #A5D5FF;
+  margin: 0px;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid transparent;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li > a {
+  margin: 0px;
+  border: 0px;
+  padding: 11px 35px 12px 35px;
+  border-radius: 0px;
+  font-size: 15px;
+  font-family: Architects Daughter;
+  font-weight: bold;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  color: white;
+  cursor: default;
+  background-color: #428BCA;
+  border: none;
+  border-bottom-color: transparent;
+}
+
+.nav-tabs > li > a:hover {
+  color: white;
+  background-color: #80C2FD;;
+}
+
+.enable-comment {
+  position: relative;
+  top: 3px;
+  left: 10px
+}
+
+.create-post {
+  margin-top: 0px !important;
+}
+
+.login {
+  background-color: transparent;
+  color: #428BCA;
+  font-size: 15px;
+  font-family: Architects Daughter;
+  font-weight: 700;
+}
+
+.login:hover {
+  text-decoration: none;
+  background-color: #80C2FD;
+  color: white;
+}
+
+.login:focus {
+  text-decoration: none;
+  color: #428bca;
+}
+
+.login-space {
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.login-clicked,
+.login-clicked:hover {
+  background-color: #428BCA !important;
+}
+
+.login-text,
+.login-text:hover {
+  color: white !important;
+  background-color: #428BCA !important;
+}
+
+.login-space:hover,
+.login-space:hover > .login {
+  background-color: #80C2FD;
+  color: white;
+  cursor: pointer;
+}
+
+.post-text {
+  font-family: Marmelad;
+}
+
+.post-tab > .nav.nav-tabs {
+  border-top: 1px solid #A5D5FF;
+  border-left: 1px solid #A5D5FF;
+  border-right: 1px solid #A5D5FF;
+}
+
+.post-list {
+  -webkit-line-clamp: 3;
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  height: auto;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.post-seen {
+  -webkit-line-clamp: inherit !important;
+}
+
+.see-more,
+.see-more:hover {
+  cursor: pointer;
+  text-decoration: none;
+}

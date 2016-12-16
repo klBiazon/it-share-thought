@@ -4,10 +4,13 @@
 
   class MainController {
 
-    constructor($http, $scope, socket) {
+    constructor($http, $scope, API, socket) {
+      this.API = API;
       this.$http = $http;
       this.socket = socket;
       this.awesomeThings = [];
+      this.posts = [];
+      this.seen = [];
 
       $scope.$on('$destroy', function() {
         socket.unsyncUpdates('thing');
@@ -15,11 +18,14 @@
     }
 
     $onInit() {
-      this.$http.get('/api/things')
-        .then(response => {
-          this.awesomeThings = response.data;
-          this.socket.syncUpdates('thing', this.awesomeThings);
-        });
+      this.posts = [];
+      this.API.get(`posts`, ``, (function(res, err) {
+        if (!err) {
+          this.posts = res;
+        } else {
+          console.log(err);
+        }
+      }).bind(this));
     }
 
     addThing() {
