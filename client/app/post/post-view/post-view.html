@@ -1,0 +1,63 @@
+<div class="container post-text">
+  <div class="col-xs-12">
+    <form class="form" name="form" ng-submit="$ctrl.editPost($ctrl.post)">
+      <uib-tabset class="post-tab">
+        <uib-tab class="active animated bounceIn">
+          <uib-tab-heading>
+            Preview
+          </uib-tab-heading>
+          <div class="col-sm-12 no-padding">
+            <div class="panel panel-default animated flipInX">
+              <div class="panel-body">
+                <h1 ng-bind="$ctrl.post.title"></h1>
+                <hr>
+                <p class="preview" ng-bind="$ctrl.post.content"></p>
+                <br><br>
+                <button type="button" class="btn btn-default pull-right" ui-sref="posts">Back</button>
+              </div>
+            </div>
+          </div>
+        </uib-tab>
+        <uib-tab class="animated bounceIn">
+          <uib-tab-heading>
+            Edit your post
+          </uib-tab-heading>
+          <div class="panel panel-default animated flipInX">
+            <div class="panel-body">
+              <div class="form-group">
+                <label>Title</label>
+                <input type="text" name="title" class="form-control" ng-model="$ctrl.post.title" placeholder="Enter title of your blog..." required/>
+                <p class="help-block" ng-show="form.title.$error.required && vm.submitted">
+                  A title is required
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Content of your post</label>
+                <textarea class="form-control" id="content" ng-model="$ctrl.post.content" rows="11" ng-required="true" placeholder="Enter the content of your blog post"></textarea>
+                <p class="help-block" ng-show="form.title.$error.required && vm.submitted">
+                  A body is required
+                </p>
+              </div>
+              <div class="form-group">
+                <label>Enable comment:
+                  <input type="checkbox" class="enable-comment" ng-model="$ctrl.post.canComment">
+                </label>
+              </div>
+              <div class="form-group">
+                <em>
+                  <label ng-if="$ctrl.success" ng-bind="$ctrl.message" class="message-text"></label>
+                  <label ng-if="!$ctrl.success" ng-bind="$ctrl.message" class="error"></label>
+                </em>
+              </div>
+              <div class="pull-right">
+                <br>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Edit</button>
+                <button type="button" class="btn btn-default" ui-sref="posts">Back</button>
+              </div>
+            </div>
+          </div>
+        </uib-tab>
+      </uib-tabset>
+    </form>
+  </div>
+</div>
