@@ -12,12 +12,12 @@
     <div class="col-sm-12">
       <div class="col-sm-9">
         <div ng-repeat="post in $ctrl.posts" class="post-text">
-          <div class="panel panel-default">
+          <div class="panel panel-default animated bounceIn">
             <div class="panel-body">
               <h1 ng-bind="post.title"></h1>
               <hr>
               <p class="preview post-list" ng-bind="post.content" ng-class="{'post-seen' : $ctrl.seen === $index}"></p>
-              <a class="see-more" ng-click="$ctrl.seen = $index;" ng-if="$ctrl.seen !== $index">See more ...</a>
+              <a class="see-more" ng-click="$ctrl.seen = $index;" ng-show="$ctrl.seen !== $index">See more ...</a>
             </div>
           </div>
         </div>

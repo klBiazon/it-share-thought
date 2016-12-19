@@ -46,6 +46,10 @@
   padding: 0.2em 0;
 }
 
+.architect-text {
+  font-family: Architects Daughter;
+}
+
 .blog {
   font-size: 90px;
   font-family: Architects Daughter;
@@ -183,4 +187,18 @@
 .see-more:hover {
   cursor: pointer;
   text-decoration: none;
+}
+
+.icon {
+  font-size: 20px;
+  color: #428bca;
+  cursor: pointer;
+}
+
+.message-text {
+  color: #428bca;
+}
+
+.error {
+  color: red;
 }
