@@ -10,7 +10,7 @@
             <uib-tab-heading>
               Write your post
             </uib-tab-heading>
-            <div class="panel panel-default">
+            <div class="panel panel-default animated bounceIn">
               <div class="panel-body">
                 <div class="form-group">
                   <label>Title</label>
@@ -34,7 +34,7 @@
                 <div class="pull-right">
                   <button type="button" class="btn btn-default pull-right" ui-sref="posts">Back</button>
                   &nbsp;
-                  <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Save</button>
+                  <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary button-margin">Save</button>
                 </div>
               </div>
             </div>
@@ -43,7 +43,7 @@
             <uib-tab-heading>
               Preview
             </uib-tab-heading>
-            <div class="panel panel-default">
+            <div class="panel panel-default animated bounceIn">
               <div class="panel-body">
                 <div class="col-xs-12">
                   <p ng-bind-html="$ctrl.preview"></p>
@@ -51,7 +51,7 @@
                     <br><br><hr>
                     <button type="button" class="btn btn-default pull-right" ui-sref="posts">Back</button>
                     &nbsp;
-                    <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary pull-right">Save</button>
+                    <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary pull-right button-margin">Save</button>
                   </div>
                 </div>
               </div>
