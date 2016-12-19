@@ -1,0 +1,35 @@
+<div class="container post-text">
+  <div class="col-sm-12">
+    <div class="col-sm-12">
+      <h1 class="create-post">List of Post</h1>
+    </div>
+  </div>
+  <div class="col-sm-12 no-padding">
+    <button class="btn btn-primary pull-right" ui-sref="post-form">
+      <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      &nbsp; Add post
+    </button>
+  </div>
+  <div class="col-sm-12 animated bounceIn">
+    <br><br>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="text-center">Title</th>
+          <th class="text-center">Date Created</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="post in $ctrl.posts">
+          <td class="text-center" ng-bind="post.title"></td>
+          <td class="text-center" ng-bind="(post.createdAt | date: 'medium')"></td>
+          <td>
+            <i class="fa fa-eye icon" ui-sref="post({id: post._id})"></i> &nbsp;
+            <i class="fa fa-trash icon" ng-click="$ctrl.deletePost(post._id, $index)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>    
+  </div>
+</div>
