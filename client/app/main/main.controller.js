@@ -11,6 +11,10 @@
       this.awesomeThings = [];
       this.posts = [];
       this.seen = [];
+      this.commentBox = '';
+      this.comment = '';
+      this.commentUpdate = '';
+      this.update = '';
 
       $scope.$on('$destroy', function() {
         socket.unsyncUpdates('thing');
@@ -28,17 +32,59 @@
       }).bind(this));
     }
 
-    addThing() {
-      if (this.newThing) {
-        this.$http.post('/api/things', {
-          name: this.newThing
-        });
-        this.newThing = '';
+    commentPost(id) {
+      if (id === this.commentBox) {
+        this.commentBox = '';
+      } else {
+        this.commentBox = id;
       }
     }
 
-    deleteThing(thing) {
-      this.$http.delete('/api/things/' + thing._id);
+    commentOnPost(comment, id, i) {
+      var obj = {
+        'id' : id,
+        'comment' : comment,
+        'createdAt': new Date(),
+        'active' : true
+      };
+
+      this.API.post(`comments`, (function(res, err) {
+        if (!err) {
+          delete obj.id;
+          this.posts[i].comments.push(obj);
+          this.comment = '';
+        } else {
+          console.log(err);
+        }
+      }).bind(this), obj);
+    }
+
+    updateComment(comment, id) {
+      if (this.update === id) {
+        this.update = '';
+        this.commentUpdate = '';
+      } else {
+        this.update = id;
+        this.commentUpdate = comment;
+        $( "#updateBox" ).focus();
+      }
+    }
+
+    updateOnComment(comment, commentId, post, i) {
+      var obj = {
+        'commentId' : commentId,
+        'comment' : comment
+      };
+
+      this.API.update(`comments/` + post._id, ``, (function(res, err) {
+        if (!err) {
+          this.update = '';
+          this.commentUpdate = '';
+          this.posts[i].comments.comment = comment;
+        } else {
+          console.log(err);
+        }
+      }).bind(this), obj);
     }
   }
 

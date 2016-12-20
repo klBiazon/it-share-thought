@@ -1,12 +1,3 @@
-<!-- <header class="hero-unit" id="banner">
-  <div class="container">
-    <div class="col-sm-offset-1 col-sm-10">
-    asds
-
-    </div>
-  </div>
-</header> -->
-
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
@@ -18,6 +9,41 @@
               <hr>
               <p class="preview post-list" ng-bind="post.content" ng-class="{'post-seen' : $ctrl.seen === $index}"></p>
               <a class="see-more" ng-click="$ctrl.seen = $index;" ng-show="$ctrl.seen !== $index">See more ...</a>
+              <div class="col-xs-12 no-padding">
+                <i class="fa fa-comment-o comment" aria-hidden="true" ng-if="post.canComment" ng-click="$ctrl.commentPost(post._id)"></i>
+              </div>
+              <div class="comment-panel" ng-show="$ctrl.commentBox === post._id">
+                <div class="panel panel-default animated bounceIn comment-panel-bottom">
+                  <div class="panel-body">
+                    <div ng-repeat="comment in post.comments">
+                      <div class="col-xs-12 no-padding animated bounceInUp message" ng-if="comment.active">
+                        <hr>
+                        <div class="col-xs-10 col-xs-offset-1">
+                          <textarea rows="2" class="form-control text-area update-comment animated bounceIn" ng-model="$ctrl.commentUpdate" placeholder="Comment ..." ng-show="$ctrl.update === post.comments[$index]._id" id="updateBox"></textarea>
+                          <span ng-bind="comment.comment" ng-hide="$ctrl.update === post.comments[$index]._id"></span>
+                          <span class="date-comment" ng-bind="(comment.createdAt | date: 'mediumDate') + ' at ' + (comment.createdAt | date: 'shortTime')" ng-hide="$ctrl.update === post.comments[$index]._id"></span>
+                        </div>
+                        <div class="col-xs-1 text-center">
+                          <i class="fa fa-pencil-square-o comment-side-btn" ng-click="$ctrl.updateComment(post.comments[$index].comment, post.comments[$index]._id)" ng-hide="$ctrl.update === post.comments[$index]._id"></i>
+                          <i class="fa fa-trash-o comment-side-btn" ng-hide="$ctrl.update === post.comments[$index]._id"></i>
+                          <button class="btn btn-default btn-xs animated rubberBand" ng-show="$ctrl.update === post.comments[$index]._id" ng-click="$ctrl.updateOnComment($ctrl.commentUpdate, post.comments[$index]._id, post, $index)">
+                            <i class="fa fa-paper-plane"></i>
+                          </button>
+                          <br>
+                          <button class="btn btn-default btn-xs back animated rubberBand" ng-show="$ctrl.update === post.comments[$index]._id" ng-click="$ctrl.update = '';">
+                            <i class="fa fa-arrow-left"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 no-padding">
+                      <hr>
+                      <textarea rows="2" class="form-control text-area" ng-model="$ctrl.comment" placeholder="Comment ..."></textarea>
+                      <input type="button" class="btn btn-default btn-sm pull-right comment-btn" ng-click="$ctrl.commentOnPost($ctrl.comment, post._id, $index)" value="Send" ng-disabled="$ctrl.comment === ''">
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -26,21 +52,5 @@
 
       </div>
     </div>
-<!--     <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">
-        <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="$ctrl.deleteThing(thing)">&times;</button></a></li>
-      </ul>
-    </div> -->
   </div>
-
-<!--   <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="$ctrl.newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="$ctrl.addThing()">Add New</button>
-      </span>
-    </p>
-  </form> -->
 </div>
