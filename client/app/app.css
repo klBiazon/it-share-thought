@@ -206,3 +206,75 @@
 .button-margin {
   margin: 0px 5px;
 }
+
+.comment {
+  float: right;
+  font-size: 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.comment-panel {
+  margin-top: 38px;
+  width: 100%;
+  padding: 0 5px;
+  margin-left: -2px;
+}
+
+.comment-panel-bottom {
+  margin-bottom: 0px;
+}
+
+.comment-btn {
+  margin-top: 10px;
+}
+
+hr {
+  margin: 0px;
+}
+
+.message > div {
+  padding: 7px 0px 27px;
+}
+
+.message:hover {
+  background-color: #F1F1F1;
+}
+
+.text-area {
+  margin-top: 10px;
+}
+
+.date-comment {
+  position: absolute;
+  bottom: 5px;
+  font-size: 11px;
+  font-style: italic;
+  left: 0px;
+}
+
+.comment-side-btn {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.fa-pencil-square-o.comment-side-btn {
+  color: #4545EC;
+}
+
+.fa-trash-o.comment-side-btn {
+  color: #DA3232;
+}
+
+.update-comment {
+  margin: 0px;
+  margin-bottom: -22px;
+}
+
+.back {
+  margin-left: -3px;
+}
+
+.back > i {
+  font-size: 14px;
+}
