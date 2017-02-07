@@ -114,9 +114,8 @@
   },
   "scripts": {
     "test": "gulp test",
-
+    "lint": "gulp lint:scripts; gulp jscs",
     "update-webdriver": "node node_modules/protractor/bin/webdriver-manager update",
-
     "start": "node server"
   },
   "private": true
