@@ -1,9 +1,9 @@
 'use strict';
-(function(){
+(function() {
 
   class PostViewComponent {
     constructor($state, API) {
-      this.post = [];
+      this.post = {};
       this.API = API;
       this.$state = $state;
       this.success = false;
@@ -12,27 +12,19 @@
 
     $onInit() {
       this.post = [];
-      this.API.get(`posts/` + this.$state.params.id, ``, (function(res, err) {
-        if (!err) {
-          this.post = res;
-        } else {
-          console.log(err);
-        }
-      }).bind(this));
+      this.API.get(`posts`, this.$state.params.id)
+        .then(res => this.post = res[0])
+        .catch(err => console.log(err));
     }
 
     editPost(post) {
       this.success = false;
-      this.API.update(`posts/` + post._id, ``, (function(res, err) {
-        if (!err) {
-          console.log(res);
+      this.API.update(`posts/`, post._id, post)
+        .then(() => {
           this.success = true;
-          this.message = "You've successfully edited your post.";
-        } else {
-          this.message = "Your post is not updated.";
-          console.log(err);
-        }
-      }).bind(this), post);
+          this.message = `You've successfully edited your post.`;
+        })
+        .catch(err => console.log(err));
     }
   }
 

@@ -1,22 +1,18 @@
 'use strict';
-(function(){
+(function() {
 
   class PostListComponent {
     constructor($state, API, Modal) {
       this.API = API;
       this.Modal = Modal;
       this.$state = $state;
-    } 
-    
+    }
+
     $onInit() {
       this.posts = [];
-      this.API.get(`posts`, ``, (function(res, err) {
-        if (!err) {
-          this.posts = res;
-        } else {
-          console.log(err);
-        }
-      }).bind(this));
+      this.API.get(`posts`)
+        .then(res => angular.copy(res, this.posts))
+        .catch(err => console.log(err));
     }
 
     deletePost(id, i) {

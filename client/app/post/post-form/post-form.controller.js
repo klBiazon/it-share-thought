@@ -1,5 +1,5 @@
 'use strict';
-(function(){
+(function() {
 
   class PostFormComponent {
     constructor(API) {

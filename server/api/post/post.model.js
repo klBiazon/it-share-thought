@@ -10,8 +10,8 @@ var PostSchema = new mongoose.Schema({
   comments: [{
     comment: { type: String },
     active: { type: Boolean, default: true },
-    createdAt : { type: Date },
-    updatedAt : { type: Date }
+    createdAt: { type: Date },
+    updatedAt: { type: Date }
   }]
 }, {
   timestamps: true

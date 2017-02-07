@@ -94,11 +94,11 @@ export function create(req, res) {
 export function update(req, res) {
   console.log(req.params);
   console.log(req.body);
-  return Post.findOne({'_id' : req.params.id},
-    {'comments' : {$elemMatch : {'_id' : req.body.commentId}}})
-    .exec(function (err,result){
-      if(err) { return handleError(res, err); }
-      if(!result) { return res.send(404); }
+  return Post.findOne({'_id': req.params.id},
+    {'comments': {$elemMatch: {'_id': req.body.commentId}}})
+    .exec(function(err, result) {
+      if (err) { return handleError(res, err); }
+      if (!result) { return res.send(404); }
       Post.update({'comments._id': req.body.commentId},
       {'$set':
         {

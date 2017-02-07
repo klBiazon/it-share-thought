@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('itShareThoughtApp')
-  .config(function ($stateProvider) {
+  .config(function($stateProvider) {
     $stateProvider
       .state('post-form', {
         url: '/post-form',

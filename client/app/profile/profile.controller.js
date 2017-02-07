@@ -1,5 +1,5 @@
 'use strict';
-(function(){
+(function() {
 
 class ProfileComponent {
   constructor() {

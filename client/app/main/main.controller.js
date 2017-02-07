@@ -23,13 +23,9 @@
 
     $onInit() {
       this.posts = [];
-      this.API.get(`posts`, ``, (function(res, err) {
-        if (!err) {
-          this.posts = res;
-        } else {
-          console.log(err);
-        }
-      }).bind(this));
+      this.API.get(`posts`)
+        .then(res => angular.copy(res, this.posts))
+        .catch(err => console.log(err));
     }
 
     commentPost(id) {
@@ -42,21 +38,19 @@
 
     commentOnPost(comment, id, i) {
       var obj = {
-        'id' : id,
-        'comment' : comment,
+        'id': id,
+        'comment': comment,
         'createdAt': new Date(),
-        'active' : true
+        'active': true
       };
 
-      this.API.post(`comments`, (function(res, err) {
-        if (!err) {
+      this.API.post(`comments`, ``, obj)
+        .then(() => {
           delete obj.id;
           this.posts[i].comments.push(obj);
           this.comment = '';
-        } else {
-          console.log(err);
-        }
-      }).bind(this), obj);
+        })
+        .catch(err => console.log(err));
     }
 
     updateComment(comment, id) {
@@ -66,25 +60,23 @@
       } else {
         this.update = id;
         this.commentUpdate = comment;
-        $( "#updateBox" ).focus();
+        $(`#updateBox`).focus();
       }
     }
 
-    updateOnComment(comment, commentId, post, i) {
+    updateOnComment(comment, commentId, post) {
       var obj = {
-        'commentId' : commentId,
-        'comment' : comment
+        'commentId': commentId,
+        'comment': comment
       };
 
-      this.API.update(`comments/` + post._id, ``, (function(res, err) {
-        if (!err) {
+      this.API.update(`comments/`, post._id, obj)
+        .then(() => {
           this.update = '';
           this.commentUpdate = '';
-          this.posts[i].comments.comment = comment;
-        } else {
-          console.log(err);
-        }
-      }).bind(this), obj);
+          post.comments.comment = comment;
+        })
+        .catch(err => console.log(err));
     }
   }
 
